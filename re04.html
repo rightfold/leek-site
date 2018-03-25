@@ -1,46 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>LOAD</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Leek documentation" /><link rel="up" href="ch03.html" title="Chapter 3. Commands" /><link rel="prev" href="re03.html" title="ENUMERATE" /><link rel="next" href="re05.html" title="VERSION" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">LOAD</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="re03.html">Prev</a> </td><th width="60%" align="center">Chapter 3. Commands</th><td width="20%" align="right"> <a accesskey="n" href="re05.html">Next</a></td></tr></table><hr /></div><div class="refentry"><a id="idm139671954509072"></a><div class="titlepage"></div>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>FOLDL</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Leek documentation" /><link rel="up" href="ch03.html" title="Chapter 3. Commands" /><link rel="prev" href="re03.html" title="ENUMERATE" /><link rel="next" href="re05.html" title="LOAD" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">FOLDL</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="re03.html">Prev</a> </td><th width="60%" align="center">Chapter 3. Commands</th><td width="20%" align="right"> <a accesskey="n" href="re05.html">Next</a></td></tr></table><hr /></div><div class="refentry"><a id="idm140666650439424"></a><div class="titlepage"></div>
   <div class="refnamediv"><h2>Name</h2><p>
-    LOAD
-     — load an extension
+    FOLDL
+     — reduce a journal to a single value
   </p></div>
 
   <div class="refsynopsisdiv"><h2>Synopsis</h2>
-    <pre class="synopsis">LOAD <em class="replaceable"><code>extension</code></em>
-FROM <em class="replaceable"><code>path</code></em></pre>
+    <pre class="synopsis">FOLDL <em class="replaceable"><code>journal</code></em>
+USING <em class="replaceable"><code>name</code></em>
+FROM <em class="replaceable"><code>extension</code></em></pre>
   </div>
 
-  <div class="refsect1"><a id="idm139671954506080"></a><h2>Description</h2>
+  <div class="refsect1"><a id="idm140666650436048"></a><h2>Description</h2>
     
 
     <p>
-      <span class="command"><strong>LOAD</strong></span> loads an extension.
+      <span class="command"><strong>FOLDL</strong></span> traverses a journal, keeping an accumulator that
+      is updated by an extension, and finally returns the accumulator.
     </p>
   </div>
 
-  <div class="refsect1"><a id="idm139671954504544"></a><h2>Options</h2>
+  <div class="refsect1"><a id="idm140666650434368"></a><h2>Options</h2>
     
 
-    <div class="variablelist"><dl class="variablelist"><dt><span class="term"><em class="replaceable"><code>extension</code></em></span></dt><dd>
+    <div class="variablelist"><dl class="variablelist"><dt><span class="term"><em class="replaceable"><code>journal</code></em></span></dt><dd>
           <p>
-            The name of the extension to load. This name will be expected in
-            commands such as <span class="command"><strong>FOLDL</strong></span>. It is an error to attempt
-            to load an extension with the same name as an already-loaded
-            extension.
+            The name of the journal to traverse. The journal must already exist.
           </p>
-        </dd><dt><span class="term"><em class="replaceable"><code>path</code></em></span></dt><dd>
+        </dd><dt><span class="term"><em class="replaceable"><code>name</code></em></span></dt><dd>
           <p>
-            The path to the shared object that implements the extension on the
-            server filesystem.
+            The name of the program from the extension to use. For some
+            extensions (such as Lua), this is not the name but the source code
+            of the program.
+          </p>
+        </dd><dt><span class="term"><em class="replaceable"><code>extension</code></em></span></dt><dd>
+          <p>
+            The extension to call the program from.
           </p>
         </dd></dl></div>
   </div>
 
-  <div class="refsect1"><a id="idm139671954499088"></a><h2>Response</h2>
+  <div class="refsect1"><a id="idm140666650427904"></a><h2>Response</h2>
     
 
     <p>
-      <span class="command"><strong>LOAD</strong></span> returns an empty response upon success.
+      <span class="command"><strong>FOLDL</strong></span> returns a single response part with the final
+      accumulator, and nothing else.
     </p>
   </div>
-</div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="re03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="re05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">ENUMERATE </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> VERSION</td></tr></table></div></body></html>
+</div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="re03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="re05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">ENUMERATE </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> LOAD</td></tr></table></div></body></html>
